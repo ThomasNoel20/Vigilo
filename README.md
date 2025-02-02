@@ -37,3 +37,63 @@ Ne pas sous-estimer le temps d’apprentissage de l’électronique embarquée.
 Expérimenter et documenter les erreurs plutôt que d’essayer de les cacher.
 Éviter le plagiat (utilisation directe de tutoriels existants).
 Respecter les délais de remise sous peine de pénalités.
+
+
+🚗 Projet de Voiture Autonome – PIC16F1789
+
+📌 Objectif du projet
+
+Ce projet vise à concevoir et programmer une voiture autonome capable de détecter et d’éviter des obstacles en ajustant sa trajectoire grâce à un microcontrôleur PIC16F1789. Pour cela, la voiture intègre plusieurs capteurs, actionneurs et un système de gestion temps réel basé sur des interruptions.
+
+🛠️ Matériel utilisé
+
+Microcontrôleur : 
+  PIC16F1789
+
+Actionneurs :
+  2 moteurs DC 12V
+  2 servomoteurs (direction et frein)
+  1 contrôleur de moteur en pont
+  
+Capteurs :
+  2 capteurs à ultrasons (détection avant/arrière)
+  2 capteurs infrarouges (détection latérale)
+  1 émetteur et 1 récepteur infrarouge
+  
+Alimentation : 
+  4 piles 1.5V (6V total) + régulateur de tension
+
+🖥️ Répartition du travail
+
+Le projet est divisé en plusieurs tâches logicielles, chacune ayant une priorité définie :
+
+1️⃣ Contrôle des moteurs (τ1) - Priorité haute
+
+Gestion des moteurs DC via PWM pour déplacer la voiture.
+Ajustement de la direction en fonction des obstacles détectés.
+
+2️⃣ Acquisition des données capteurs (τ2) - Interruption prioritaire
+
+Mesure des distances avec les capteurs ultrasons.
+Détection des obstacles latéraux avec les capteurs infrarouges.
+Vérification des conditions de stationnement.
+
+3️⃣ Contrôle des servomoteurs (τ3) - Priorité moyenne
+
+Ajustement de l’angle des roues pour changer de direction.
+Activation du frein via un servomoteur.
+
+4️⃣ Acquisition des données moteurs (τ4) - Priorité basse
+
+Surveillance de la vitesse et de la distance parcourue.
+Utilisation d’un convertisseur ADC pour récupérer les signaux analogiques.
+
+⚡ Gestion du Temps Réel
+
+Utilisation d’un RTOS (Real-Time Operating System) pour assurer un ordonnancement optimal des tâches.
+Interruption sur l’acquisition des capteurs pour garantir une détection immédiate des obstacles.
+Mécanisme de préemption pour donner la priorité à la sécurité et aux corrections de trajectoire.
+
+📌 Conclusion
+
+Ce projet est une application pratique des systèmes embarqués et de la programmation bas niveau en assembleur sur un PIC16F1789. Il combine gestion matérielle, contrôle moteur et traitement en temps réel pour réaliser un système autonome efficace.
